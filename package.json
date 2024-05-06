@@ -1,0 +1,20 @@
+{
+  "name": "@booru/moleculer-ts",
+  "version": "1.0.0",
+  "description": "MoleculerJS Developer utils",
+  "type": "module",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "release": "turbo run publish-pkg",
+    "start": "turbo run start"
+  },
+  "devDependencies": {
+    "turbo": "latest"
+  },
+  "packageManager": "npm@10.2.4",
+  "author": "prasadmadanayake",
+  "workspaces": [
+    "packages/*"
+  ]
+}
