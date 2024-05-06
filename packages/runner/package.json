@@ -11,7 +11,7 @@
   "scripts": {
     "build": "tsc && vite build",
     "prepublishOnly": "npm run build",
-    "publish-pkg": "npm publish"
+    "publish-pkg": "npm publish --access public"
   },
   "devDependencies": {
     "typescript": "^5.2.2",
