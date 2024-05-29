@@ -1,11 +1,15 @@
 {
-  "name": "@booru/vite-plugin-moleculer-runner",
+  "name": "@booru/moleculer-multi-serve",
   "private": false,
-  "version": "0.0.4",
+  "version": "0.0.1",
   "type": "module",
   "main": "dist/main.mjs",
   "types": "dist/main.d.ts",
-  "bundledDependencies": ["dotenv", "glob", "@types/glob"],
+  "exports": {
+    "import": "dist/main.mjs",
+    "require": "dist/main.cjs"
+  },
+  "bundledDependencies": [],
   "files": [
     "dist"
   ],
@@ -16,7 +20,18 @@
   },
   "repository": {
     "url": "https://github.com/prasadmadanayake/moleculer-plugins",
-    "directory": "packages/runner"
+    "directory": "packages/multi-serve"
+  },
+  "dependencies": {
+    "path-to-regexp": "^6.2.2",
+    "serve-static": "^1.15.0",
+    "@types/serve-static": "^1.15.7"
+  },
+  "peerDependencies": {
+    "moleculer": "*",
+    "moleculer-web": "*",
+    "path-to-regexp": "*",
+    "serve-static": "*"
   },
   "devDependencies": {
     "typescript": "^5.2.2",

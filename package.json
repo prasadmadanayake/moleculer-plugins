@@ -15,6 +15,7 @@
   "packageManager": "npm@10.2.4",
   "author": "prasadmadanayake",
   "workspaces": [
-    "packages/runner"
+    "packages/runner",
+    "packages/multi-serve"
   ]
 }

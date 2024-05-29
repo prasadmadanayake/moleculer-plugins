@@ -1,5 +1,6 @@
-# Vite Plugins for moleculer applications
+# Plugins for moleculer applications
 
 ## Plugin List
 
-- [Moleculer Runner ESM](./packages/runner/ReadMe.md)
+- [Vite Moleculer Runner ESM](./packages/runner/ReadMe.md)
+- [Multiple Static Roots for Moleculer Web](./packages/multi-serve)
