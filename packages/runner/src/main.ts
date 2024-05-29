@@ -3,7 +3,7 @@ import {pathToFileURL} from "node:url";
 import {register, createRequire} from "node:module";
 import {join, dirname} from 'path'
 import {Middleware, ServiceBroker} from 'moleculer'
-import glob from "glob";
+import {sync} from "glob";
 
 export interface Options {
     env: boolean,
@@ -21,7 +21,7 @@ export const defaultOpts: Options = {
     hot: true,
     esm: true,
     repl: true,
-    config: "service/moleculer.config.ts",//'moleculer.config.mjs',
+    config: "moleculer.config.ts",//'moleculer.config.mjs',
     tsconfig: '',
     files: "**/*.service.ts",//'**/*.service.mjs',
     middleware: (server) => ([])
@@ -69,7 +69,7 @@ class MolRunner implements Partial<Plugin> {
         }
 
         return async () => {
-            const files = glob.sync(MolRunner.options.files, {absolute: true});
+            const files = sync(MolRunner.options.files, {absolute: true});
             let mods = files.map(async f => {
                 let ref = await server.moduleGraph.getModuleByUrl(f, true)
                 if (ref)

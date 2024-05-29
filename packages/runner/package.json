@@ -5,6 +5,7 @@
   "type": "module",
   "main": "dist/main.mjs",
   "types": "dist/main.d.ts",
+  "bundledDependencies": ["dotenv", "glob", "@types/glob"],
   "files": [
     "dist"
   ],
