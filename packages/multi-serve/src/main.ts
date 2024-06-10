@@ -24,7 +24,8 @@ export interface StaticRoot{
     serve: serveStatic.RequestHandler<ServerResponse>
     re: RegExp,
     path: string,
-    transformPath: PathTransform
+    transformPath: PathTransform,
+    priority: number
 }
 
 export class MultiRoots implements Partial<ServiceSchema<ServeSettings>>{
@@ -35,6 +36,7 @@ export class MultiRoots implements Partial<ServiceSchema<ServeSettings>>{
 
     created: ServiceSyncLifecycleHandler<ServeSettings> = function (){
         if(this.settings.serve){
+            const segRe = new RegExp(/\//g)
             this.$static = Object.entries(this.settings.serve).map(([k,v]: [string, Serve])=>{
                 const {folder, transformPath, ...args } = v as Serve;
                 let fullPath = k;
@@ -45,9 +47,11 @@ export class MultiRoots implements Partial<ServiceSchema<ServeSettings>>{
                     path: fullPath,
                     re: pathToRegexp(`${fullPath}(.*)`),
                     transformPath: transformPath || StripPrefix,
-                    serve: serveStatic(folder, args)
+                    serve: serveStatic(folder, args),
+                    priority: (fullPath.match(segRe) || []).length
                 } as StaticRoot
             })
+            this.$static.sort((a:StaticRoot,b:StaticRoot)=>b.priority - a.priority);
             this.serve =  function (request: IncomingMessage, response: ServerResponse, next: (err?: HttpError) => void) {
                 if(request.url != null){
                     for(let s of this.$static){

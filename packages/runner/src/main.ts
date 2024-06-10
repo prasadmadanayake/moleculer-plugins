@@ -3,7 +3,7 @@ import {pathToFileURL} from "node:url";
 import {register, createRequire} from "node:module";
 import {join, dirname} from 'path'
 import {Middleware, ServiceBroker} from 'moleculer'
-import {sync} from "glob";
+import {globSync as sync} from "glob";
 
 export interface Options {
     env: boolean,
