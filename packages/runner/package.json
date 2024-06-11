@@ -18,6 +18,10 @@
     "url": "https://github.com/prasadmadanayake/moleculer-plugins",
     "directory": "packages/runner"
   },
+  "peerDependencies": {
+    "dotenv": "*",
+    "glob": "*"
+  },
   "devDependencies": {
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
