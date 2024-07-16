@@ -3,7 +3,7 @@ import {pathToFileURL} from "node:url";
 import {register, createRequire} from "node:module";
 import {join, dirname} from 'path'
 import {Middleware, ServiceBroker} from 'moleculer'
-import glob from 'glob'
+import glob from "tiny-glob/sync";
 
 export interface Options {
     env: boolean,
@@ -69,7 +69,7 @@ class MolRunner implements Partial<Plugin> {
         }
 
         return async () => {
-            const files = glob.sync(MolRunner.options.files, {absolute: true});
+            const files = glob(MolRunner.options.files, {absolute: true});
             let mods = files.map(async f => {
                 let ref = await server.moduleGraph.getModuleByUrl(f, true)
                 if (ref)

@@ -1,11 +1,11 @@
 {
   "name": "@booru/vite-plugin-moleculer-runner",
   "private": false,
-  "version": "0.0.6",
+  "version": "0.0.7",
   "type": "module",
   "main": "dist/main.mjs",
   "types": "dist/main.d.ts",
-  "bundledDependencies": ["dotenv", "glob", "@types/glob"],
+  "bundledDependencies": ["dotenv", "tiny-glob"],
   "files": [
     "dist"
   ],
@@ -20,7 +20,7 @@
   },
   "peerDependencies": {
     "dotenv": "*",
-    "glob": "*"
+    "tiny-glob": "*"
   },
   "devDependencies": {
     "typescript": "^5.2.2",
@@ -30,7 +30,6 @@
     "moleculer": "^0.14.33",
     "ts-node": "^10.9.2",
     "dotenv": "^16.4.5",
-    "glob": "^10.3.12",
-    "@types/glob": "^8.1.0"
+    "tiny-glob": "^0.2.9"
   }
 }
