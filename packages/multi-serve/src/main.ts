@@ -1,7 +1,7 @@
 import {IncomingMessage, ServerResponse} from "http";
 import path from "path";
 import serveStatic from "serve-static";
-import {ServiceSchema, ServiceSettingSchema, ServiceSyncLifecycleHandler} from "moleculer";
+import {Service, ServiceSchema, ServiceSettingSchema, ServiceSyncLifecycleHandler} from "moleculer";
 import {pathToRegexp} from "path-to-regexp";
 import {HttpError} from "http-errors";
 
@@ -34,7 +34,7 @@ export class MultiRoots implements Partial<ServiceSchema<ServeSettings>>{
     $static: StaticRoot[] = [];
     settings : ServeSettings = { }
 
-    created: ServiceSyncLifecycleHandler<ServeSettings> = function (){
+    created = function (this: Service<ServeSettings>){
         if(this.settings.serve){
             const segRe = new RegExp(/\//g)
             this.$static = Object.entries(this.settings.serve).map(([k,v]: [string, Serve])=>{
@@ -49,7 +49,7 @@ export class MultiRoots implements Partial<ServiceSchema<ServeSettings>>{
                     transformPath: transformPath || StripPrefix,
                     serve: serveStatic(folder, args),
                     priority: (fullPath.match(segRe) || []).length
-                } as StaticRoot
+                } as unknown as StaticRoot
             })
             this.$static.sort((a:StaticRoot,b:StaticRoot)=>b.priority - a.priority);
             this.serve =  function (request: IncomingMessage, response: ServerResponse, next: (err?: HttpError) => void) {

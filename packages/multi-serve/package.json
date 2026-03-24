@@ -1,12 +1,13 @@
 {
   "name": "@booru/moleculer-multi-serve",
   "private": false,
-  "version": "0.0.7",
+  "version": "1.0.0",
   "type": "module",
   "main": "dist/main.mjs",
   "types": "dist/main.d.ts",
   "exports": {
     "import": "./dist/main.mjs",
+    "types": "./dist/main.d.ts",
     "require": "./dist/main.cjs"
   },
   "bundledDependencies": [],
@@ -23,9 +24,9 @@
     "directory": "packages/multi-serve"
   },
   "dependencies": {
-    "path-to-regexp": "^6.2.2",
-    "serve-static": "^1.15.0",
-    "@types/serve-static": "^1.15.7"
+    "path-to-regexp": "^8.3.0",
+    "serve-static": "^2.2.1",
+    "@types/serve-static": "^2.2.0"
   },
   "peerDependencies": {
     "moleculer": "*",
@@ -34,13 +35,13 @@
     "serve-static": "*"
   },
   "devDependencies": {
-    "typescript": "^5.2.2",
-    "vite": "^5.2.0",
-    "@types/node": "^20.12.7",
-    "vite-plugin-dts": "^3.8.3",
-    "moleculer": "^0.14.33",
+    "typescript": "~5.9.3",
+    "vite": "^8.0.2",
+    "@types/node": "^22.13.14",
+    "vite-plugin-dts": "^4.5.4",
+    "moleculer": "^0.14.35",
     "ts-node": "^10.9.2",
-    "dotenv": "^16.4.5",
+    "dotenv": "^17.3.1",
     "tiny-glob": "^0.2.9"
   }
 }
